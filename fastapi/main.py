@@ -104,7 +104,7 @@ async def process_comment(comment):
     return comment
 
 # Endpoint to fetch and process YouTube comments
-@app.get("/sync-video")
+@app.get("/video")
 async def get_video(ytid: str, start: int, end: int, sort: int = Query(...)):
     # Validate YouTube video ID
     if not is_valid_youtube_id(ytid):
@@ -115,7 +115,6 @@ async def get_video(ytid: str, start: int, end: int, sort: int = Query(...)):
         raise HTTPException(status_code=404, detail="Invalid sort value. Expected either 0 or 1")
     # Initialize result list
     res = []
-
     # Fetch comments using downloader
     comments = downloader.get_comments(ytid, sort_by=sort)
 
