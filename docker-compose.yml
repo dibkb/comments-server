@@ -8,6 +8,9 @@ services:
     image: fastapi-i
     expose:
       - "8000"
+    volumes:
+      - "./fastapi/data:/server/data"
+      - "./fastapi/video_info.db:/server/video_info.db"
   nginx:
     container_name: nginx-c
     image: nginx
